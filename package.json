@@ -1,0 +1,42 @@
+{
+  "name": "proof-of-effort",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@solana/wallet-adapter-base": "0.9.23",
+    "@solana/wallet-adapter-phantom": "0.9.24",
+    "@solana/wallet-adapter-react": "0.15.35",
+    "@solana/wallet-adapter-react-ui": "0.9.35",
+    "@solana/web3.js": "1.95.3",
+    "bs58": "^6.0.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.5.5",
+    "tweetnacl": "^1.0.3",
+    "zustand": "^5.0.2"
+  },
+  "overrides": {
+    "@solana/web3.js": "1.95.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "es-abstract": "^1.24.1",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

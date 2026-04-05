@@ -1,0 +1,9 @@
+[programs.devnet]
+proof_of_effort = "Fg6PaFpoGXkYsidMpWxTWqkZq8ShWm6ihcK3a8bJc7UU"
+
+[provider]
+cluster = "Devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "anchor test"
