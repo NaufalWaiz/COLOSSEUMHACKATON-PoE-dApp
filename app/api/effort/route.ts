@@ -1,11 +1,11 @@
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { ACTIVITY_WEIGHTS } from "@/lib/constants";
 import { createEffortActivity } from "@/lib/repository";
-import { getSession } from "@/lib/session";
 
 export async function POST(request: Request) {
-  const session = getSession();
-  if (!session) {
+  const { userId } = await auth();
+  if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
   try {
     const payload = await createEffortActivity({
-      walletAddress: session.walletAddress,
+      walletAddress: userId,
       activityType,
       duration,
       description,

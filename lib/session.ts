@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { cookies } from "next/headers";
 import { SESSION_COOKIE, SESSION_MAX_AGE } from "@/lib/constants";
-import { env } from "@/lib/env";
+import { serverEnv } from "@/lib/server-env";
 
 function base64UrlEncode(value: string) {
   return Buffer.from(value).toString("base64url");
@@ -12,7 +12,7 @@ function base64UrlDecode(value: string) {
 }
 
 function sign(payload: string) {
-  return crypto.createHmac("sha256", env.sessionSecret).update(payload).digest("base64url");
+  return crypto.createHmac("sha256", serverEnv.sessionSecret).update(payload).digest("base64url");
 }
 
 export function createSessionToken(walletAddress: string) {

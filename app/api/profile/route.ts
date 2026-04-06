@@ -1,16 +1,16 @@
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { getProfile } from "@/lib/repository";
-import { getSession } from "@/lib/session";
 
 export async function GET(request: Request) {
-  const session = getSession();
+  const { userId } = await auth();
   const url = new URL(request.url);
-  const walletAddress = url.searchParams.get("wallet") ?? session?.walletAddress;
+  const identity = url.searchParams.get("identity") ?? userId;
 
-  if (!walletAddress) {
+  if (!identity) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const profile = await getProfile(walletAddress);
+  const profile = await getProfile(identity);
   return NextResponse.json(profile);
 }

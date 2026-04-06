@@ -67,3 +67,10 @@ export type LeaderboardEntry = {
   streak: number;
   activityCount: number;
 };
+
+export type PersonSummary = {
+  id: string;
+  displayName: string;
+  subtitle: string;
+  imageUrl: string | null;
+};

@@ -1,5 +1,5 @@
-import { env } from "@/lib/env";
 import { randomId } from "@/lib/id";
+import { serverEnv } from "@/lib/server-env";
 import { BlockchainRecord } from "@/lib/types";
 
 export async function recordEffortOnChain(input: {
@@ -13,6 +13,6 @@ export async function recordEffortOnChain(input: {
     effortHash: input.effortHash,
     score: input.score,
     timestamp: Date.now(),
-    network: env.mockAdapters ? "solana-devnet-mock" : "solana-devnet",
+    network: serverEnv.mockAdapters ? "solana-devnet-mock" : "solana-devnet",
   };
 }

@@ -5,6 +5,7 @@ import { Crown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { memberLabel } from "@/lib/identity";
 import { LeaderboardEntry } from "@/lib/types";
 import { formatRelativeDayLabel } from "@/lib/utils";
 import { useAppStore } from "@/store/app-store";
@@ -26,8 +27,8 @@ export default function LeaderboardPage() {
     <div className="space-y-10">
       <SectionHeading
         eyebrow="Leaderboard"
-        title="Rank effort, not clout"
-        description="Optional MVP module that ranks users by transparent effort score. Filters keep the board useful for both recent momentum and all-time output."
+        title="Team activity ranking"
+        description="A lightweight board showing who has been shipping the most verified work in the selected time window."
       />
 
       <div className="flex flex-wrap gap-3">
@@ -42,7 +43,7 @@ export default function LeaderboardPage() {
         ))}
       </div>
 
-      <Card className="bg-white/5">
+      <Card>
         <div className="mb-6 flex items-center justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Current window</p>
@@ -61,7 +62,7 @@ export default function LeaderboardPage() {
               <thead className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 <tr>
                   <th className="pb-4">Rank</th>
-                  <th className="pb-4">Wallet</th>
+                  <th className="pb-4">Member</th>
                   <th className="pb-4">Score</th>
                   <th className="pb-4">Streak</th>
                   <th className="pb-4">Activities</th>
@@ -69,9 +70,9 @@ export default function LeaderboardPage() {
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.walletAddress} className="border-t border-white/10">
+                  <tr key={row.walletAddress} className="border-t border-border">
                     <td className="py-4 font-semibold text-primary">#{row.rank}</td>
-                    <td className="py-4 text-foreground">{row.walletAddress}</td>
+                    <td className="py-4 text-foreground">{memberLabel(row.walletAddress)}</td>
                     <td className="py-4 text-foreground">{row.totalScore}</td>
                     <td className="py-4 text-foreground">{row.streak} days</td>
                     <td className="py-4 text-muted-foreground">{row.activityCount}</td>
